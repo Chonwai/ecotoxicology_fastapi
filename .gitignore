@@ -33,3 +33,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Mac OS X Finder
+.DS_Store
+*/**/.DS_Store
+
+# Python
+*.pyc
+*/**/__pycache__/
