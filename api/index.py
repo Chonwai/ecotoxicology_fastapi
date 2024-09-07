@@ -3,8 +3,6 @@ from pydantic import BaseModel
 import numpy as np
 from service.fpgnn.tool import get_scaler, load_args, load_data, load_model
 from service.fpgnn.train import predict
-from service.fpgnn.data import MoleDataSet
-from typing import List
 
 app = FastAPI()
 
@@ -14,28 +12,6 @@ class PredictionRequest(BaseModel):
     smiles: list[str]
     model_type: str  # 用於指定 F2F, C2C 或 A2A 模型
 
-
-# 定義返回的 JSON 結構
-class PredictionResponse(BaseModel):
-    smiles: List[str]
-    predictions: List[float]
-
-
-# def predicting(smiles_list: list, model_path: str):
-#     # 模擬一個從 SMILES 列表讀取的 DataLoader, 假設 MoleDataSet 支持從 SMILES 列表初始化
-#     test_data = MoleDataSet(smiles_list)
-    
-#     # 加載模型
-#     scaler = get_scaler(model_path)
-#     train_args = load_args(model_path)
-#     model = load_model(model_path, train_args.cuda)
-    
-#     # 進行預測
-#     test_pred = predict(model, test_data, train_args.batch_size, scaler)
-    
-#     # 檢查預測結果並展開為單層結構
-#     test_pred = np.array(test_pred).flatten().tolist()  # 確保為單層的浮點數列表
-#     return test_pred
 
 def predicting(smiles_list, model_path):
     # 模擬一個從 SMILES 列表讀取的數據集，因為原始 load_data 需要文件
