@@ -4,7 +4,7 @@ import torch.nn as nn
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem, MACCSkeys
-from api.fpgnn.data import GetPubChemFPs, create_graph, get_atom_features_dim
+from service.fpgnn.data import GetPubChemFPs, create_graph, get_atom_features_dim
 import csv
 
 atts_out = []

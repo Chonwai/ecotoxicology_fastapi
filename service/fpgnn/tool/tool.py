@@ -7,8 +7,8 @@ import torch
 import torch.nn as nn
 from torch.optim.lr_scheduler import _LRScheduler
 from sklearn.metrics import auc, mean_squared_error, precision_recall_curve, roc_auc_score
-from api.fpgnn.data import MoleDataSet, MoleData, scaffold_split
-from api.fpgnn.model import FPGNN
+from service.fpgnn.data import MoleDataSet, MoleData, scaffold_split
+from service.fpgnn.model import FPGNN
 
 def mkdir(path,isdir = True):
     if isdir == False:

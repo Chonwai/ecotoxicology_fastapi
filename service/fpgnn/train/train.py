@@ -7,9 +7,9 @@ import torch
 from torch.optim import Adam
 from torch.optim.lr_scheduler import ExponentialLR
 
-from api.fpgnn.tool.tool import mkdir, get_task_name, load_data, split_data, get_label_scaler, get_loss, get_metric, save_model, NoamLR, load_model
-from api.fpgnn.model import FPGNN
-from api.fpgnn.data import MoleDataSet
+from service.fpgnn.tool.tool import mkdir, get_task_name, load_data, split_data, get_label_scaler, get_loss, get_metric, save_model, NoamLR, load_model
+from service.fpgnn.model import FPGNN
+from service.fpgnn.data import MoleDataSet
 
 def epoch_train(model,data,loss_f,optimizer,scheduler,args):
     model.train()

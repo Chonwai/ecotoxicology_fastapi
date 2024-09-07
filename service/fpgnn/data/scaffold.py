@@ -5,7 +5,7 @@ import numpy as np
 from rdkit import Chem
 from rdkit.Chem.Scaffolds import MurckoScaffold
 
-from api.fpgnn.data import MoleDataSet
+from service.fpgnn.data import MoleDataSet
 
 def generate_scaffold(mol,include_chirality=False):
     mol = Chem.MolFromSmiles(mol) if type(mol) == str else mol

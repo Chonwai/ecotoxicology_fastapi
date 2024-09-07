@@ -1,12 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import numpy as np
-from api.fpgnn.tool import get_scaler, load_args, load_data, load_model
-from api.fpgnn.train import predict
-from api.fpgnn.data import MoleDataSet
+from service.fpgnn.tool import get_scaler, load_args, load_data, load_model
+from service.fpgnn.train import predict
+from service.fpgnn.data import MoleDataSet
 from typing import List
-import io
-import csv
 
 app = FastAPI()
 
@@ -75,7 +73,7 @@ def hello_world():
 @app.post("/api/predict")
 def predict_toxicity(request: PredictionRequest):
     # 根據 model_type 選擇對應的模型路徑
-    model_map = {"F2F": "api/model/F2F.pt", "C2C": "api/model/C2C.pt", "A2A": "api/model/A2A.pt"}
+    model_map = {"F2F": "service/model/F2F.pt", "C2C": "service/model/C2C.pt", "A2A": "service/model/A2A.pt"}
 
     if request.model_type not in model_map:
         return {"status": "false", "message": "Invalid model_type. Please choose from F2F, C2C, A2A."}
