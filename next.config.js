@@ -25,6 +25,9 @@ const nextConfig = {
       },
     ];
   },
+  builds: {
+    maxLambdaSize: "450mb",
+  },
 };
 
 module.exports = nextConfig;
