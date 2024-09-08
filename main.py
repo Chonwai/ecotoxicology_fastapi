@@ -46,32 +46,33 @@ def hello_world():
 :param request: 包含 SMILES 列表和模型类型的 JSON 请求。
 :return: 返回预测结果的 JSON 格式。
 """
-@app.post("/api/predict")
-def predict_toxicity(request: PredictionRequest):
-    # 根據 model_type 選擇對應的模型路徑
-    model_map = {"F2F": "service/model/F2F.pt", "C2C": "service/model/C2C.pt", "A2A": "service/model/A2A.pt"}
+# @app.post("/api/predict")
+# def predict_toxicity(request: PredictionRequest):
+#     # 根據 model_type 選擇對應的模型路徑
+#     model_map = {"F2F": "service/model/F2F.pt", "C2C": "service/model/C2C.pt", "A2A": "service/model/A2A.pt"}
 
-    if request.model_type not in model_map:
-        return {"status": "false", "message": "Invalid model_type. Please choose from F2F, C2C, A2A."}
+#     if request.model_type not in model_map:
+#         return {"status": "false", "message": "Invalid model_type. Please choose from F2F, C2C, A2A."}
     
-    print(request.smiles)
-    print(request.model_type)
+#     print(request.smiles)
+#     print(request.model_type)
 
-    model_path = model_map[request.model_type]
+#     model_path = model_map[request.model_type]
     
-    # 調用預測函數，傳入 SMILES 列表
-    try:
-        predictions, smiles = predicting(request.smiles, model_path)
-    except Exception as e:
-        return {"error": f"Prediction failed: {str(e)}"}
+#     # 調用預測函數，傳入 SMILES 列表
+#     try:
+#         predictions, smiles = predicting(request.smiles, model_path)
+#     except Exception as e:
+#         return {"error": f"Prediction failed: {str(e)}"}
 
-    # 構建 JSON 格式的返回值
-    result = {
-        "status": "success",
-        "data": {
-            "smiles": smiles,
-            "predictions": predictions
-        }
-    }
+#     # 構建 JSON 格式的返回值
+#     result = {
+#         "status": "success",
+#         "data": {
+#             "smiles": smiles,
+#             "predictions": predictions
+#         }
+#     }
 
-    return result
+#     return result
+
