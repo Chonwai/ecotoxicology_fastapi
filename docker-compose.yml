@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  ecotoxicology-predict-fastapi:
+    build:
+      context: .
+    ports:
+      - 8890:8888
+    volumes:
+      - .:/app
+    restart: always
+    command: uvicorn app:app --host 0.0.0.0 --port 8888
+    networks:
+      - ecotoxicology-predict-fastapi
+    # env_file: .env
+
+networks:
+  ecotoxicology-predict-fastapi:
+    driver: bridge
