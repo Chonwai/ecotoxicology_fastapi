@@ -1,10 +1,10 @@
-import requests, os
+# import requests, os
 from fastapi import FastAPI
-from pydantic import BaseModel
-import numpy as np
-from service.fpgnn.tool import get_scaler, load_args, load_data, load_model
-from service.fpgnn.train import predict
-from fastapi.responses import ORJSONResponse
+# from pydantic import BaseModel
+# import numpy as np
+# from service.fpgnn.tool import get_scaler, load_args, load_data, load_model
+# from service.fpgnn.train import predict
+# from fastapi.responses import ORJSONResponse
 
 app = FastAPI()
 
