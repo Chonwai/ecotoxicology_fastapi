@@ -5,5 +5,5 @@ torch-geometric==2.5.3
 torchvision==0.17.0
 numpy==1.26.4
 tqdm==4.66.5
-rdkit==2024.3.5
+rdkit==2023.9.6
 deepchem
