@@ -87,4 +87,5 @@ async def predict_toxicity(request: PredictionRequest):
         "data": {"smiles": smiles, "predictions": predictions},
     }
 
-    return result
+    # return result
+    return {"message": "Hello World"}
