@@ -7,3 +7,4 @@ numpy==1.26.4
 tqdm==4.66.5
 rdkit==2023.9.6
 deepchem
+orjson

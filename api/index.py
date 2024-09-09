@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import numpy as np
 from service.fpgnn.tool import get_scaler, load_args, load_data, load_model
 from service.fpgnn.train import predict
+from fastapi.responses import ORJSONResponse
 
 app = FastAPI()
 
@@ -40,7 +41,7 @@ def hello_world():
     return {"message": "Hello World"}
 
 
-@app.post("/api/predict")
+@app.post("/api/predict", response_class=ORJSONResponse)
 async def predict_toxicity(request: PredictionRequest):
     # 根據 model_type 選擇對應的模型路徑
     model_map = {
