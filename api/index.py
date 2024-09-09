@@ -76,16 +76,16 @@ async def predict_toxicity(request: PredictionRequest):
     model_path = download_model_if_not_exists(model_url, model_name)
 
     # 調用預測函數，傳入 SMILES 列表
-    try:
-        predictions, smiles = predicting(request.smiles, model_path)
-    except Exception as e:
-        return {"error": f"Prediction failed: {str(e)}"}
+    # try:
+    #     predictions, smiles = predicting(request.smiles, model_path)
+    # except Exception as e:
+    #     return {"error": f"Prediction failed: {str(e)}"}
 
     # 構建 JSON 格式的返回值
-    result = {
-        "status": "success",
-        "data": {"smiles": smiles, "predictions": predictions},
-    }
+    # result = {
+    #     "status": "success",
+    #     "data": {"smiles": smiles, "predictions": predictions},
+    # }
 
     # return result
     return {"message": "Hello World"}
