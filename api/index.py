@@ -10,43 +10,43 @@ app = FastAPI()
 
 
 # 定義接收的 JSON 結構
-class PredictionRequest(BaseModel):
-    smiles: list[str]
-    model_type: str  # 用於指定 F2F, C2C 或 A2A 模型
+# class PredictionRequest(BaseModel):
+#     smiles: list[str]
+#     model_type: str  # 用於指定 F2F, C2C 或 A2A 模型
 
 
-# 定義下載模型的函數
-def download_model_if_not_exists(url, model_name):
-    model_path = f"/tmp/{model_name}"  # 使用 /tmp 來保存下載的模型
-    if not os.path.exists(model_path):
-        print(f"Downloading model {model_name} from {url}...")
-        response = requests.get(url)
-        with open(model_path, "wb") as f:
-            f.write(response.content)
-        print(f"Model {model_name} downloaded.")
-    return model_path
+# # 定義下載模型的函數
+# def download_model_if_not_exists(url, model_name):
+#     model_path = f"/tmp/{model_name}"  # 使用 /tmp 來保存下載的模型
+#     if not os.path.exists(model_path):
+#         print(f"Downloading model {model_name} from {url}...")
+#         response = requests.get(url)
+#         with open(model_path, "wb") as f:
+#             f.write(response.content)
+#         print(f"Model {model_name} downloaded.")
+#     return model_path
 
 
-def predicting(smiles_list, model_path):
-    # 模擬一個從 SMILES 列表讀取的數據集，因為原始 load_data 需要文件
-    # 所以這裡可以創建一個臨時的 CSV 文件來傳遞數據
-    args = load_args(model_path)
+# def predicting(smiles_list, model_path):
+#     # 模擬一個從 SMILES 列表讀取的數據集，因為原始 load_data 需要文件
+#     # 所以這裡可以創建一個臨時的 CSV 文件來傳遞數據
+#     args = load_args(model_path)
 
-    # 使用 `load_data` 加載數據
-    test_data = load_data(smiles_list, args, from_file=False)
+#     # 使用 `load_data` 加載數據
+#     test_data = load_data(smiles_list, args, from_file=False)
 
-    # 加載模型和進行預測
-    scaler = get_scaler(model_path)
-    model = load_model(model_path, args.cuda)
+#     # 加載模型和進行預測
+#     scaler = get_scaler(model_path)
+#     model = load_model(model_path, args.cuda)
 
-    # 預測
-    test_pred = predict(model, test_data, args.batch_size, scaler)
+#     # 預測
+#     test_pred = predict(model, test_data, args.batch_size, scaler)
 
-    # 將結果轉換為 Python 列表
-    test_pred = np.array(test_pred).tolist()
+#     # 將結果轉換為 Python 列表
+#     test_pred = np.array(test_pred).tolist()
 
-    # 返回預測結果
-    return test_pred, test_data.smile()
+#     # 返回預測結果
+#     return test_pred, test_data.smile()
 
 
 @app.get("/api/python")
