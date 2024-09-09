@@ -13,7 +13,7 @@ app = FastAPI()
 class PredictionRequest(BaseModel):
     smiles: list[str]
     model_type: str  # 用於指定 F2F, C2C 或 A2A 模型
-    
+
 
 # 定義下載模型的函數
 def download_model_if_not_exists(url, model_name):
@@ -21,7 +21,7 @@ def download_model_if_not_exists(url, model_name):
     if not os.path.exists(model_path):
         print(f"Downloading model {model_name} from {url}...")
         response = requests.get(url)
-        with open(model_path, 'wb') as f:
+        with open(model_path, "wb") as f:
             f.write(response.content)
         print(f"Model {model_name} downloaded.")
     return model_path
@@ -56,27 +56,12 @@ def hello_world():
 
 @app.post("/api/predict", response_class=ORJSONResponse)
 async def predict_toxicity(request: PredictionRequest):
-    # 根據 model_type 選擇對應的模型路徑
-    # model_map = {
-    #     "F2F": "service/model/F2F.pt",
-    #     "C2C": "service/model/C2C.pt",
-    #     "A2A": "service/model/A2A.pt",
-    # }
-    
     model_map = {
         "F2F": "https://bcoc8vpakuqoxkgl.public.blob.vercel-storage.com/F2F-BvHdyhk9tyo7d5onoB9iHpwiFoogAq.pt",
         "C2C": "https://bcoc8vpakuqoxkgl.public.blob.vercel-storage.com/C2C-SpNj7ZlZAwHR6Nt4mrIkzEiUmLjhtQ.pt",
         "A2A": "https://bcoc8vpakuqoxkgl.public.blob.vercel-storage.com/A2A-L8ecvXA89xTLYL1BP8gDvmepPtw4mY.pt",
     }
 
-    # if request.model_type not in model_map:
-    #     return {
-    #         "status": "false",
-    #         "message": "Invalid model_type. Please choose from F2F, C2C, A2A.",
-    #     }
-
-    # model_path = model_map[request.model_type]
-    
     if request.model_type not in model_map:
         return {
             "status": "false",
