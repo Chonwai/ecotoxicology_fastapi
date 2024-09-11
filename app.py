@@ -14,6 +14,8 @@ class PredictionRequest(BaseModel):
 
 
 def validate_fasta(fasta_str):
+    # 清理換行符
+    fasta_str = fasta_str.replace('\r\n', '\n').replace('\r', '\n')
     lines = fasta_str.strip().split('\n')
     if len(lines) % 2 != 0:
         raise ValueError("FASTA format error: Each ID line must be followed by a sequence line.")
@@ -26,6 +28,8 @@ def validate_fasta(fasta_str):
 
 
 def parse_fasta(fasta_str):
+    # 清理換行符
+    fasta_str = fasta_str.replace('\r\n', '\n').replace('\r', '\n')
     lines = fasta_str.strip().split('\n')
     ids = []
     smiles = []
@@ -101,6 +105,8 @@ def predict_toxicity(request: PredictionRequest):
             "predictions": predictions
         }
     }
+    
+    print(result)
 
     return result
 
