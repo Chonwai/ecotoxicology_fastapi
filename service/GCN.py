@@ -1,11 +1,18 @@
 from rdkit import Chem
+from rdkit.Chem import AllChem
 import torch
 from torch_geometric.data import Data
 import os
+import re
 import pickle
+import json
+from rdkit.Chem import PandasTools
+import pandas as pd
+from torch_geometric.data import InMemoryDataset
 from torch.nn import Linear
 import torch.nn.functional as F
-from torch_geometric.nn import GraphConv, global_mean_pool
+from torch_geometric.nn import GCNConv, GraphConv, GATConv, global_mean_pool
+from torch_geometric.loader import DataLoader
 import sys
 
 sys.path.append(".")
