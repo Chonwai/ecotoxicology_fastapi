@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import numpy as np
-from service.fpgnn.tool import get_scaler, load_args, load_data, load_model
-from service.fpgnn.train import predict
+from service.GCN import load_model, predict_toxicity
+import logging
+import uvicorn
 
 app = FastAPI()
 
@@ -14,101 +14,71 @@ class PredictionRequest(BaseModel):
 
 
 def validate_fasta(fasta_str):
-    # 清理換行符
-    fasta_str = fasta_str.replace('\r\n', '\n').replace('\r', '\n')
-    lines = fasta_str.strip().split('\n')
+    fasta_str = fasta_str.replace("\r\n", "\n").replace("\r", "\n")
+    lines = fasta_str.strip().split("\n")
     if len(lines) % 2 != 0:
-        raise ValueError("FASTA format error: Each ID line must be followed by a sequence line.")
+        raise ValueError(
+            "FASTA format error: Each ID line must be followed by a sequence line."
+        )
     for i in range(0, len(lines), 2):
-        if not lines[i].startswith('>'):
+        if not lines[i].startswith(">"):
             raise ValueError(f"FASTA format error: Line {i+1} does not start with '>'.")
-        if not lines[i+1]:
+        if not lines[i + 1]:
             raise ValueError(f"FASTA format error: Line {i+2} is empty.")
     return True
 
 
 def parse_fasta(fasta_str):
-    # 清理換行符
-    fasta_str = fasta_str.replace('\r\n', '\n').replace('\r', '\n')
-    lines = fasta_str.strip().split('\n')
+    fasta_str = fasta_str.replace("\r\n", "\n").replace("\r", "\n")
+    lines = fasta_str.strip().split("\n")
     ids = []
     smiles = []
     for i in range(0, len(lines), 2):
         ids.append(lines[i][1:])  # 去掉 '>'
-        smiles.append(lines[i+1])
+        smiles.append(lines[i + 1])
     return ids, smiles
 
 
-def predicting(smiles_list, model_path):
-    # 模擬一個從 SMILES 列表讀取的數據集，因為原始 load_data 需要文件
-    # 所以這裡可以創建一個臨時的 CSV 文件來傳遞數據
-    args = load_args(model_path)
-
-    # 使用 `load_data` 加載數據
-    test_data = load_data(smiles_list, args, from_file=False)
-    
-    # 加載模型和進行預測
-    scaler = get_scaler(model_path)
-    model = load_model(model_path, args.cuda)
-    
-    # 預測
-    test_pred = predict(model, test_data, args.batch_size, scaler)
-    
-    # 將結果轉換為一維數組
-    test_pred = np.array(test_pred).flatten().tolist()
-    
-    # 返回預測結果
-    return test_pred, test_data.smile()
-
-
-@app.get("/api/python")
-def hello_world():
-    return {"message": "Hello World"}
-
-
-"""
-分子毒性预测接口，接受 SMILES 列表，并返回对应的预测值。
-
-:param request: 包含 SMILES 列表和模型类型的 JSON 请求。
-:return: 返回预测结果的 JSON 格式。
-"""
 @app.post("/api/predict")
-def predict_toxicity(request: PredictionRequest):
-    # 根據 model_type 選擇對應的模型路徑
-    model_map = {"F2F": "service/model/F2F.pt", "C2C": "service/model/C2C.pt", "A2A": "service/model/A2A.pt"}
+def predict_toxicity_endpoint(request: PredictionRequest):
+    model_type = request.model_type
+    fasta = request.fasta
 
-    if request.model_type not in model_map:
-        return {"status": "false", "message": "Invalid model_type. Please choose from F2F, C2C, A2A."}
-    
-    print(request)
-    
+    # 驗證FASTA格式
     try:
-        validate_fasta(request.fasta)
+        validate_fasta(fasta)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
-    
-    ids, smiles = parse_fasta(request.fasta)
-    model_path = model_map[request.model_type]
-    
-    # 調用預測函數，傳入 SMILES 列表
+
+    # 解析FASTA以獲取SMILES
     try:
-        predictions, _ = predicting(smiles, model_path)
+        ids, smiles = parse_fasta(fasta)
     except Exception as e:
-        return {"error": f"Prediction failed: {str(e)}"}
+        raise HTTPException(status_code=400, detail=f"Failed to parse FASTA: {str(e)}")
 
-    # 構建 JSON 格式的返回值
-    result = {
+    # 載入對應的模型
+    try:
+        model = load_model(model_type)
+        print("Model loaded:", model)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Model loading failed: {str(e)}")
+
+    # 進行預測
+    try:
+        results = predict_toxicity(model, smiles)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
+
+    # 構建回應
+    response = {
         "status": "success",
-        "data": {
-            "fasta_ids": ids,
-            "smiles": smiles,
-            "predictions": predictions
-        }
+        "data": {"fasta_ids": ids, "smiles": smiles, "predictions": results},
     }
-    
-    print(result)
 
-    return result
+    return response
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
