@@ -4,20 +4,48 @@ import pandas as pd
 import torch
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from .GCN import GCN, smile_to_graph
+from service.GCN_new import GCN, smile_to_graph
 from torch_geometric.data import Data
 import os
 import logging
 from dotenv import load_dotenv
 
+
+class GCN(torch.nn.Module):
+    def __init__(self, hidden_channels):
+        super(GCN, self).__init__()
+        torch.manual_seed(12345)
+        self.conv1 = GraphConv(dataset.num_node_features, hidden_channels)
+        self.conv2 = GraphConv(hidden_channels, hidden_channels)
+        self.conv3 = GraphConv(hidden_channels, hidden_channels)
+        self.lin = Linear(hidden_channels, dataset.num_classes)
+
+    def forward(self, x, edge_index, batch):
+        # 1. Obtain node embeddings
+        x = self.conv1(x, edge_index)
+        x = x.relu()
+        x = self.conv2(x, edge_index)
+        x = x.relu()
+        x = self.conv3(x, edge_index)
+
+        # 2. Readout layer
+        x = global_mean_pool(x, batch)  # [batch_size, hidden_channels]
+
+        # 3. Apply a final classifier
+        x = F.dropout(x, p=0.1, training=self.training)
+        x = self.lin(x)
+
+        return x
+
+
 # 配置日誌
 logging.basicConfig(
     level=logging.DEBUG if os.getenv("ENV") == "development" else logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[
         logging.StreamHandler(),
-        logging.FileHandler(f"{os.getenv('ENV', 'development')}.log")
-    ]
+        logging.FileHandler(f"{os.getenv('ENV', 'development')}.log"),
+    ],
 )
 logger = logging.getLogger(__name__)
 
@@ -28,7 +56,9 @@ app = FastAPI(
     title="Ecotoxicology Prediction API",
     description="API for predicting ecotoxicology using GCN models",
     version="1.0.0",
-    docs_url="/docs" if os.getenv("ENV") == "development" else None  # 生產環境禁用 Swagger
+    docs_url=(
+        "/docs" if os.getenv("ENV") == "development" else None
+    ),  # 生產環境禁用 Swagger
 )
 
 # 環境變數設置
@@ -41,24 +71,36 @@ logger.info(f"Starting application in {ENV} mode")
 
 try:
     # Load the models
-    models = {
-        "A2A": pickle.load(open("A2A.pickle", "rb")),
-        "C2C": pickle.load(open("C2C.pickle", "rb")),
-        "F2F": pickle.load(open("F2F.pickle", "rb")),
-    }
+    models = {}
+    # models = {
+    #     "A2A": pickle.load(open("A2A.pickle", "rb")),
+    #     "C2C": pickle.load(open("C2C.pickle", "rb")),
+    #     "F2F": pickle.load(open("F2F.pickle", "rb")),
+    # }
+    with open("A2A.pickle", "rb") as f:
+        models["A2A"] = pickle.load(f)
+    with open("C2C.pickle", "rb") as f:
+        models["C2C"] = pickle.load(f)
+    with open("F2F.pickle", "rb") as f:
+        models["F2F"] = pickle.load(f)
     logger.info("Models loaded successfully")
 except Exception as e:
     logger.error(f"Failed to load models: {str(e)}")
     raise
 
+
 class PredictionRequest(BaseModel):
     fasta: str
     model_type: str
 
+
 def parse_fasta(fasta_str: str) -> List[str]:
     entries = fasta_str.split(">")
-    sequences = [entry.split("\n", 1)[1].replace("\n", "") for entry in entries if entry]
+    sequences = [
+        entry.split("\n", 1)[1].replace("\n", "") for entry in entries if entry
+    ]
     return sequences
+
 
 @app.post("/predict/")
 async def predict(request: PredictionRequest):
@@ -85,33 +127,26 @@ async def predict(request: PredictionRequest):
         logger.error(f"Prediction failed: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/health")
 async def health_check():
     """健康檢查端點"""
     return {"status": "healthy", "environment": ENV}
 
+
 if __name__ == "__main__":
     import uvicorn
+    from service.GCN_new import GCN, smile_to_graph
 
     # 開發模式配置
     if DEBUG:
         logger.info("Starting server in development mode")
         uvicorn.run(
-            "app:app",
-            host=HOST,
-            port=PORT,
-            reload=True,
-            workers=1,
-            log_level="debug"
+            "app:app", host=HOST, port=PORT, reload=True, workers=1, log_level="debug"
         )
     else:
         # 生產模式配置
         logger.info("Starting server in production mode")
         uvicorn.run(
-            app,
-            host=HOST,
-            port=PORT,
-            workers=4,
-            access_log=True,
-            log_level="info"
+            app, host=HOST, port=PORT, workers=4, access_log=True, log_level="info"
         )

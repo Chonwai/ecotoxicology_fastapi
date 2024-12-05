@@ -1,0 +1,200 @@
+2024-12-05 06:20:10,904 - app - INFO - Starting application in development mode
+2024-12-05 06:20:10,905 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:07,075 - app - INFO - Starting application in development mode
+2024-12-05 06:21:07,075 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:08,857 - app - INFO - Starting application in development mode
+2024-12-05 06:21:08,858 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:10,846 - app - INFO - Starting application in development mode
+2024-12-05 06:21:10,846 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:13,100 - app - INFO - Starting application in development mode
+2024-12-05 06:21:13,101 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:15,763 - app - INFO - Starting application in development mode
+2024-12-05 06:21:15,764 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:19,111 - app - INFO - Starting application in development mode
+2024-12-05 06:21:19,112 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:24,031 - app - INFO - Starting application in development mode
+2024-12-05 06:21:24,032 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:32,239 - app - INFO - Starting application in development mode
+2024-12-05 06:21:32,239 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:21:46,771 - app - INFO - Starting application in development mode
+2024-12-05 06:21:46,771 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:14,155 - app - INFO - Starting application in development mode
+2024-12-05 06:22:14,156 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:40,073 - app - INFO - Starting application in development mode
+2024-12-05 06:22:40,074 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:41,857 - app - INFO - Starting application in development mode
+2024-12-05 06:22:41,858 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:43,810 - app - INFO - Starting application in development mode
+2024-12-05 06:22:43,810 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:46,092 - app - INFO - Starting application in development mode
+2024-12-05 06:22:46,093 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:48,686 - app - INFO - Starting application in development mode
+2024-12-05 06:22:48,687 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:52,064 - app - INFO - Starting application in development mode
+2024-12-05 06:22:52,065 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:22:57,053 - app - INFO - Starting application in development mode
+2024-12-05 06:22:57,053 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:23:05,273 - app - INFO - Starting application in development mode
+2024-12-05 06:23:05,273 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:23:20,449 - app - INFO - Starting application in development mode
+2024-12-05 06:23:20,449 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:23:48,011 - app - INFO - Starting application in development mode
+2024-12-05 06:23:48,012 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:18,729 - app - INFO - Starting application in development mode
+2024-12-05 06:24:18,729 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:20,663 - app - INFO - Starting application in development mode
+2024-12-05 06:24:20,664 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:22,622 - app - INFO - Starting application in development mode
+2024-12-05 06:24:22,622 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:24,783 - app - INFO - Starting application in development mode
+2024-12-05 06:24:24,784 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:27,429 - app - INFO - Starting application in development mode
+2024-12-05 06:24:27,430 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:30,954 - app - INFO - Starting application in development mode
+2024-12-05 06:24:30,955 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:35,931 - app - INFO - Starting application in development mode
+2024-12-05 06:24:35,932 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:44,201 - app - INFO - Starting application in development mode
+2024-12-05 06:24:44,202 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:24:58,859 - app - INFO - Starting application in development mode
+2024-12-05 06:24:58,860 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:25:26,285 - app - INFO - Starting application in development mode
+2024-12-05 06:25:26,286 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:26:19,363 - app - INFO - Starting application in development mode
+2024-12-05 06:26:19,364 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:17,942 - app - INFO - Starting application in development mode
+2024-12-05 06:27:17,943 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:19,851 - app - INFO - Starting application in development mode
+2024-12-05 06:27:19,851 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:21,874 - app - INFO - Starting application in development mode
+2024-12-05 06:27:21,875 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:24,114 - app - INFO - Starting application in development mode
+2024-12-05 06:27:24,115 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:26,735 - app - INFO - Starting application in development mode
+2024-12-05 06:27:26,736 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:30,183 - app - INFO - Starting application in development mode
+2024-12-05 06:27:30,184 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:35,261 - app - INFO - Starting application in development mode
+2024-12-05 06:27:35,262 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:43,586 - app - INFO - Starting application in development mode
+2024-12-05 06:27:43,587 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:27:58,236 - app - INFO - Starting application in development mode
+2024-12-05 06:27:58,237 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:28:25,734 - app - INFO - Starting application in development mode
+2024-12-05 06:28:25,735 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:29:37,468 - app - INFO - Starting application in development mode
+2024-12-05 06:29:37,469 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:29:40,853 - app - INFO - Starting application in development mode
+2024-12-05 06:29:40,853 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:29:45,968 - app - INFO - Starting application in development mode
+2024-12-05 06:29:45,969 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:29:54,315 - app - INFO - Starting application in development mode
+2024-12-05 06:29:54,319 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:09,129 - app - INFO - Starting application in development mode
+2024-12-05 06:30:09,130 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:11,860 - app - INFO - Starting application in development mode
+2024-12-05 06:30:11,861 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:13,807 - app - INFO - Starting application in development mode
+2024-12-05 06:30:13,808 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:15,744 - app - INFO - Starting application in development mode
+2024-12-05 06:30:15,745 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:17,870 - app - INFO - Starting application in development mode
+2024-12-05 06:30:17,871 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:20,490 - app - INFO - Starting application in development mode
+2024-12-05 06:30:20,491 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:23,937 - app - INFO - Starting application in development mode
+2024-12-05 06:30:23,938 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:28,957 - app - INFO - Starting application in development mode
+2024-12-05 06:30:28,958 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:37,285 - app - INFO - Starting application in development mode
+2024-12-05 06:30:37,286 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:30:52,020 - app - INFO - Starting application in development mode
+2024-12-05 06:30:52,021 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:31:19,570 - app - INFO - Starting application in development mode
+2024-12-05 06:31:19,570 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:31:58,299 - app - INFO - Starting application in development mode
+2024-12-05 06:31:58,299 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:00,210 - app - INFO - Starting application in development mode
+2024-12-05 06:32:00,211 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:02,154 - app - INFO - Starting application in development mode
+2024-12-05 06:32:02,155 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:04,271 - app - INFO - Starting application in development mode
+2024-12-05 06:32:04,272 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:06,844 - app - INFO - Starting application in development mode
+2024-12-05 06:32:06,845 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:10,300 - app - INFO - Starting application in development mode
+2024-12-05 06:32:10,301 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:15,315 - app - INFO - Starting application in development mode
+2024-12-05 06:32:15,315 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:23,537 - app - INFO - Starting application in development mode
+2024-12-05 06:32:23,538 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:32:38,061 - app - INFO - Starting application in development mode
+2024-12-05 06:32:38,062 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:05,535 - app - INFO - Starting application in development mode
+2024-12-05 06:33:05,536 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:26,729 - app - INFO - Starting application in development mode
+2024-12-05 06:33:26,729 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:28,611 - app - INFO - Starting application in development mode
+2024-12-05 06:33:28,612 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:30,517 - app - INFO - Starting application in development mode
+2024-12-05 06:33:30,518 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:32,657 - app - INFO - Starting application in development mode
+2024-12-05 06:33:32,657 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:35,272 - app - INFO - Starting application in development mode
+2024-12-05 06:33:35,273 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:38,679 - app - INFO - Starting application in development mode
+2024-12-05 06:33:38,680 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:43,737 - app - INFO - Starting application in development mode
+2024-12-05 06:33:43,738 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:33:51,951 - app - INFO - Starting application in development mode
+2024-12-05 06:33:51,952 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:06,701 - app - INFO - Starting application in development mode
+2024-12-05 06:34:06,702 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:14,441 - app - INFO - Starting application in development mode
+2024-12-05 06:34:14,441 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:16,289 - app - INFO - Starting application in development mode
+2024-12-05 06:34:16,290 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:18,240 - app - INFO - Starting application in development mode
+2024-12-05 06:34:18,241 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:20,370 - app - INFO - Starting application in development mode
+2024-12-05 06:34:20,371 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:22,958 - app - INFO - Starting application in development mode
+2024-12-05 06:34:22,959 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:26,433 - app - INFO - Starting application in development mode
+2024-12-05 06:34:26,434 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:31,608 - app - INFO - Starting application in development mode
+2024-12-05 06:34:31,609 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:39,895 - app - INFO - Starting application in development mode
+2024-12-05 06:34:39,896 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:34:54,615 - app - INFO - Starting application in development mode
+2024-12-05 06:34:54,616 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:35:21,997 - app - INFO - Starting application in development mode
+2024-12-05 06:35:21,997 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:36:14,995 - app - INFO - Starting application in development mode
+2024-12-05 06:36:14,996 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:37:16,878 - app - INFO - Starting application in development mode
+2024-12-05 06:37:16,879 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:38:18,716 - app - INFO - Starting application in development mode
+2024-12-05 06:38:18,717 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:39:20,598 - app - INFO - Starting application in development mode
+2024-12-05 06:39:20,599 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:40:22,421 - app - INFO - Starting application in development mode
+2024-12-05 06:40:22,422 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:41:24,340 - app - INFO - Starting application in development mode
+2024-12-05 06:41:24,341 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:42:26,092 - app - INFO - Starting application in development mode
+2024-12-05 06:42:26,093 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:43:27,846 - app - INFO - Starting application in development mode
+2024-12-05 06:43:27,847 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:44:29,711 - app - INFO - Starting application in development mode
+2024-12-05 06:44:29,712 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:45:31,628 - app - INFO - Starting application in development mode
+2024-12-05 06:45:31,629 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:46:33,452 - app - INFO - Starting application in development mode
+2024-12-05 06:46:33,453 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:47:35,382 - app - INFO - Starting application in development mode
+2024-12-05 06:47:35,383 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:48:37,335 - app - INFO - Starting application in development mode
+2024-12-05 06:48:37,336 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
+2024-12-05 06:49:39,173 - app - INFO - Starting application in development mode
+2024-12-05 06:49:39,174 - app - ERROR - Failed to load models: Can't get attribute 'GCN' on <module '__main__' from '/usr/local/bin/uvicorn'>
