@@ -10,6 +10,5 @@ torch-geometric==2.4.0
 torchvision==0.17.0
 dgl==2.1.0
 pandas==2.1.1
-
 prometheus-client
 starlette-prometheus
