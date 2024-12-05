@@ -1,84 +1,117 @@
+import pickle
+from typing import List, Dict
+import pandas as pd
+import torch
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-from service.GCN import load_model, predict_toxicity
+from .GCN import GCN, smile_to_graph
+from torch_geometric.data import Data
+import os
 import logging
-import uvicorn
+from dotenv import load_dotenv
 
-app = FastAPI()
+# 配置日誌
+logging.basicConfig(
+    level=logging.DEBUG if os.getenv("ENV") == "development" else logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+        logging.FileHandler(f"{os.getenv('ENV', 'development')}.log")
+    ]
+)
+logger = logging.getLogger(__name__)
 
+# 載入 .env 文件
+load_dotenv()
 
-# 定義接收的 JSON 結構
+app = FastAPI(
+    title="Ecotoxicology Prediction API",
+    description="API for predicting ecotoxicology using GCN models",
+    version="1.0.0",
+    docs_url="/docs" if os.getenv("ENV") == "development" else None  # 生產環境禁用 Swagger
+)
+
+# 環境變數設置
+ENV = os.getenv("ENV", "development")
+HOST = os.getenv("HOST", "0.0.0.0")
+PORT = int(os.getenv("PORT", "8890"))
+DEBUG = ENV == "development"
+
+logger.info(f"Starting application in {ENV} mode")
+
+try:
+    # Load the models
+    models = {
+        "A2A": pickle.load(open("A2A.pickle", "rb")),
+        "C2C": pickle.load(open("C2C.pickle", "rb")),
+        "F2F": pickle.load(open("F2F.pickle", "rb")),
+    }
+    logger.info("Models loaded successfully")
+except Exception as e:
+    logger.error(f"Failed to load models: {str(e)}")
+    raise
+
 class PredictionRequest(BaseModel):
     fasta: str
-    model_type: str  # 用於指定 F2F, C2C 或 A2A 模型
+    model_type: str
 
+def parse_fasta(fasta_str: str) -> List[str]:
+    entries = fasta_str.split(">")
+    sequences = [entry.split("\n", 1)[1].replace("\n", "") for entry in entries if entry]
+    return sequences
 
-def validate_fasta(fasta_str):
-    fasta_str = fasta_str.replace("\r\n", "\n").replace("\r", "\n")
-    lines = fasta_str.strip().split("\n")
-    if len(lines) % 2 != 0:
-        raise ValueError(
-            "FASTA format error: Each ID line must be followed by a sequence line."
-        )
-    for i in range(0, len(lines), 2):
-        if not lines[i].startswith(">"):
-            raise ValueError(f"FASTA format error: Line {i+1} does not start with '>'.")
-        if not lines[i + 1]:
-            raise ValueError(f"FASTA format error: Line {i+2} is empty.")
-    return True
-
-
-def parse_fasta(fasta_str):
-    fasta_str = fasta_str.replace("\r\n", "\n").replace("\r", "\n")
-    lines = fasta_str.strip().split("\n")
-    ids = []
-    smiles = []
-    for i in range(0, len(lines), 2):
-        ids.append(lines[i][1:])  # 去掉 '>'
-        smiles.append(lines[i + 1])
-    return ids, smiles
-
-
-@app.post("/api/predict")
-def predict_toxicity_endpoint(request: PredictionRequest):
-    model_type = request.model_type
-    fasta = request.fasta
-
-    # 驗證FASTA格式
+@app.post("/predict/")
+async def predict(request: PredictionRequest):
+    logger.debug(f"Received prediction request for model type: {request.model_type}")
     try:
-        validate_fasta(fasta)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
+        model = models.get(request.model_type)
+        if not model:
+            logger.warning(f"Invalid model type requested: {request.model_type}")
+            raise HTTPException(status_code=400, detail="Invalid model type")
 
-    # 解析FASTA以獲取SMILES
-    try:
-        ids, smiles = parse_fasta(fasta)
+        sequences = parse_fasta(request.fasta)
+        predictions = []
+
+        for seq in sequences:
+            data = smile_to_graph(seq)
+            output = model(data)
+            pred_class = torch.argmax(output, dim=1).item()
+            predictions.append({"sequence": seq, "prediction": pred_class})
+
+        logger.info(f"Successfully processed {len(sequences)} sequences")
+        return {"predictions": predictions}
+
     except Exception as e:
-        raise HTTPException(status_code=400, detail=f"Failed to parse FASTA: {str(e)}")
+        logger.error(f"Prediction failed: {str(e)}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))
 
-    # 載入對應的模型
-    try:
-        model = load_model(model_type)
-        print("Model loaded:", model)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Model loading failed: {str(e)}")
-
-    # 進行預測
-    try:
-        results = predict_toxicity(model, smiles)
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
-
-    # 構建回應
-    response = {
-        "status": "success",
-        "data": {"fasta_ids": ids, "smiles": smiles, "predictions": results},
-    }
-
-    return response
-
+@app.get("/health")
+async def health_check():
+    """健康檢查端點"""
+    return {"status": "healthy", "environment": ENV}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")
+    import uvicorn
+
+    # 開發模式配置
+    if DEBUG:
+        logger.info("Starting server in development mode")
+        uvicorn.run(
+            "app:app",
+            host=HOST,
+            port=PORT,
+            reload=True,
+            workers=1,
+            log_level="debug"
+        )
+    else:
+        # 生產模式配置
+        logger.info("Starting server in production mode")
+        uvicorn.run(
+            app,
+            host=HOST,
+            port=PORT,
+            workers=4,
+            access_log=True,
+            log_level="info"
+        )
